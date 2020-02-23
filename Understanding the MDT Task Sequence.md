@@ -112,8 +112,7 @@ network location if configured (need to set the variable SLShare)
 ### 2. Prepare OS
 (sysprep?) ­> Yes
 ### 3. Capture the reference machine
-(Why capture? I just want to deploy a server from the
-install.wim file we allready have captured. What is the benfits of doing this?) ­> This TaskSequence template covers deploying a captured image but also creating this image. This step runs only if the variable DoCapture is set to YES so in most cases it will be ignored. You can safely remove this group if you never use this ts for capturing an image.
+This TaskSequence template covers deploying a captured image but also creating this image. This step runs only if the variable `DoCapture` is set to YES so in most cases it will be ignored. You can safely remove this group if you never use this TS for capturing an image.
 
 ## Gather Logs and StateStore on Failure
 See this as a Try...Catch block. It will ensure that the state store gets moved to a different location (mostly C:\Windows\Temp) and the logs will be copied to a network folder. It's mainly for error handling and will only execute if the last Action did not succeed. In regard to the "why"
@@ -125,3 +124,4 @@ it might have happened a reboot (that could even be the cause for the last error
 ### 3. Move state store
 (what does this step do?)
 ### 4. Copy Logs
+Copies log files from the local location at C:\... to the location specified in the `SLShare` location.
